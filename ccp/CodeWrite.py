@@ -1,16 +1,20 @@
 class CodeWriter:
 
     def __init__(self, fname):
+    # Inicializa o CodeWriter com o nome do arquivo de saída e outras variáveis de estado.
         self.output = []
         self.module_name = "Main"
         self.syn_count = 0
         self.output_file_name = fname
 
     def set_file_name(self, s):
+    # Define o nome do módulo com base no caminho do arquivo de entrada.
         self.module_name = s[s.rfind("/") + 1:s.index(".")]
         print(self.module_name)
 
     def registerName(self, segment, index):
+    # Retorna o nome do registrador para o segmento e índice fornecidos.
+
         if segment == "local":
             return "LCL"
         elif segment == "argument":
@@ -25,7 +29,7 @@ class CodeWriter:
             return "R" + str(5 + index)
 
         return f"{self.module_name}.{index}"
-
+# Gerando código para as instruções
     def writePush(self, seg, index):
         if seg == "constant":
             self.write(f"@{index}  // push {seg} {index}")

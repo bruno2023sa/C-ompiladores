@@ -16,7 +16,6 @@ def main():
 
     filename = sys.argv[1]
 
-   
 
     if os.path.isdir(filename):
         output_filename = os.path.join(filename, f"{os.path.basename(filename)}.asm")
